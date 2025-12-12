@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, Legend, BarChart, Bar } from "recharts";
 import { growthData, transferData, regionalData } from "@/lib/mockData";
-import { TrendingUp, Globe, Map, Building } from "lucide-react";
+import { TrendingUp, Globe, Map } from "lucide-react";
 
 export default function StatisticsSection() {
   return (

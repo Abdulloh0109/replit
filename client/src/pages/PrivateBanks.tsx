@@ -1,18 +1,17 @@
 import PageLayout from "@/components/layout/PageLayout";
-import BankList from "@/components/ui/BankList";
-import { banks } from "@/lib/mockData";
+import DynamicBankTable from "@/components/sections/BankTable";
+import { useExcelFileStore } from "@/lib/store";
 
 export default function PrivateBanks() {
-  const privateBanks = banks.filter(b => b.type === 'private');
+  const { excelFile } = useExcelFileStore();
 
   return (
     <PageLayout>
       <div className="py-8">
-        <BankList 
-          title="Xususiy Banklar Reytingi" 
-          description="Xususiy kapital asosida faoliyat yurituvchi banklar reytingi."
-          data={privateBanks}
-          showRankHighlight={true}
+        <DynamicBankTable
+          table={excelFile?.[4]?.data}
+          title="Xususiy Banklar Reytingi"
+          description="Xususiy kapital asosida faoliyat yurituvchi banklarning moliyaviy holati."
         />
       </div>
     </PageLayout>

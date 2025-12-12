@@ -2,27 +2,85 @@
 <html lang="uz">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-
-    <title>O'zbekiston Banklar Reytingi - Markaziy Bank Statistikasi</title>
-    <meta name="description" content="O'zbekiston tijorat banklarining rasmiy reytingi, moliyaviy tahlillar, o'sish ko'rsatkichlari va hududiy statistika." />
-    
-    <meta property="og:title" content="O'zbekiston Banklar Reytingi" />
-    <meta property="og:description" content="Tijorat banklari faoliyati bo'yicha tahliliy ma'lumotlar va reytinglar." />
+  
+    <!-- Primary title / description -->
+    <title>O'zbekiston Banklar Reytingi — Markaziy Bank Statistikasi va Tahlil</title>
+    <meta name="description" content="O'zbekiston tijorat banklarining rasmiy reytingi, moliyaviy ko'rsatkichlar, o'sish tahlillari va hududiy statistikalar — yangilangan va ishonchli ma'lumotlar." />
+    <meta name="keywords" content="Oʻzbekiston banklari, banklar reytingi, Markaziy Bank, moliyaviy tahlil, banking statistikasi" />
+  
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://example.uz/banklar-reytingi" />
+    <link rel="alternate" href="https://example.uz/banklar-reytingi" hreflang="uz" />
+    <link rel="alternate" href="https://example.ru/banklar-reytingi" hreflang="ru" />
+    <link rel="alternate" href="https://example.com/bank-rating" hreflang="en" />
+  
+    <!-- Open Graph (Facebook / link previews) -->
+    <meta property="og:site_name" content="O'zbekiston Banklar Reytingi" />
+    <meta property="og:title" content="O'zbekiston Banklar Reytingi — Markaziy Bank Statistikasi" />
+    <meta property="og:description" content="Tijorat banklari reytingi, moliyaviy tahlillar va hududiy statistikalar. Yangilangan rasmiy ma'lumotlar." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/attached_assets/bank-hero.png" />
-    
+    <meta property="og:url" content="https://example.uz/banklar-reytingi" />
+    <meta property="og:image" content="https://example.uz/attached_assets/bank-hero.png" />
+    <meta property="og:image:alt" content="O'zbekiston banklari — grafik va reytinglar" />
+  
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="O'zbekiston Banklar Reytingi" />
-    <meta name="twitter:description" content="Tijorat banklari faoliyati bo'yicha tahliliy ma'lumotlar va reytinglar." />
-
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="twitter:description" content="Tijorat banklari reytingi va moliyaviy tahlillar." />
+    <meta name="twitter:image" content="https://example.uz/attached_assets/bank-hero.png" />
+  
+    <!-- Robots and indexing -->
+    <meta name="robots" content="index, follow, max-snippet:200, max-image-preview:large" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+  
+    <!-- Icons & manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0b4b6f" />
+  
+    <!-- Prefetch fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
   </head>
+  
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "url": "https://example.uz/",
+            "name": "O'zbekiston Banklar Reytingi",
+            "description": "O'zbekiston tijorat banklari bo'yicha reyting va moliyaviy tahlillar",
+            "publisher": {
+              "@type": "Organization",
+              "name": "O'zbekiston Banklar Reytingi",
+              "url": "https://example.uz/"
+            }
+          },
+          {
+            "@type": "Organization",
+            "name": "O'zbekiston Banklar Reytingi",
+            "url": "https://example.uz/",
+            "logo": "https://example.uz/attached_assets/logo.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Bosh sahifa", "item": "https://example.uz/" },
+              { "@type": "ListItem", "position": 2, "name": "Reytinglar", "item": "https://example.uz/banklar-reytingi" }
+            ]
+          }
+        ]
+      }
+      </script>
   </body>
 </html>

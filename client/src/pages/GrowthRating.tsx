@@ -1,20 +1,17 @@
 import PageLayout from "@/components/layout/PageLayout";
-import BankList from "@/components/ui/BankList";
-import { banks } from "@/lib/mockData";
+import DynamicBankTable from "@/components/sections/BankTable";
+import { useExcelFileStore } from "@/lib/store";
 
 export default function GrowthRating() {
-  const growthBanks = banks
-    .filter(b => b.growth > 0)
-    .sort((a, b) => b.growth - a.growth);
+  const { excelFile } = useExcelFileStore();
 
   return (
     <PageLayout>
       <div className="py-8">
-        <BankList 
-          title="Eng Katta O'sish Ko'rsatgan Banklar" 
+        <DynamicBankTable
+          table={excelFile?.[7]?.data}
+          title="Eng Katta Oʻsish"
           description="Yillik o'sish dinamikasi bo'yicha yetakchi banklar ro'yxati."
-          data={growthBanks}
-          showRankHighlight={true}
         />
       </div>
     </PageLayout>

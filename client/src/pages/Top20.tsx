@@ -1,18 +1,17 @@
 import PageLayout from "@/components/layout/PageLayout";
-import BankList from "@/components/ui/BankList";
-import { banks } from "@/lib/mockData";
+import DynamicBankTable from "@/components/sections/BankTable";
+import { useExcelFileStore } from "@/lib/store";
 
 export default function Top20() {
-  const top20Banks = banks.slice(0, 20);
-  
+  const { excelFile } = useExcelFileStore();
+
   return (
     <PageLayout>
       <div className="py-8">
-        <BankList 
-          title="TOP-20 Banklar" 
+        <DynamicBankTable
+          table={excelFile?.[5]?.data}
+          title="TOP-20 Banklar"
           description="Eng yuqori ko'rsatkichlarga ega 20 ta yetakchi bank."
-          data={top20Banks}
-          showRankHighlight={true}
         />
       </div>
     </PageLayout>

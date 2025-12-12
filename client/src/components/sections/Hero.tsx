@@ -1,16 +1,38 @@
 import { motion } from "framer-motion";
 import heroBg from "@assets/generated_images/professional_government_bank_building_with_blue_sky.png";
+import logo from "@/assets/CBU_Logo.svg.png";
+import pdfFile from "@/assets/10dan boshlangan.pdf";
+import { FileText } from "lucide-react";
 
 export default function Hero() {
+  const handleOpenPdf = () => {
+    window.open(pdfFile, "_blank");
+  };
+
   return (
     <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-slate-900">
       {/* Background Image with Overlay */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         <div className="absolute inset-0 bg-slate-900/60 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+        {/* Logo and PDF Button Header */}
+        <div className="absolute top-0 left-0 z-20 flex w-full h-16 md:h-20 px-4 md:px-6 items-center justify-between">
+          <img
+            src={logo}
+            alt="CBU Logo"
+            className="h-10 w-auto md:h-14 lg:h-16 object-contain"
+          />
+          <button
+            onClick={handleOpenPdf}
+            className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
+          >
+            <FileText className="h-4 w-4 md:h-5 md:w-5" />
+            <span className="hidden sm:inline">Renking</span>
+          </button>
+        </div>
       </div>
 
       {/* Content */}
@@ -22,32 +44,28 @@ export default function Hero() {
           className="max-w-4xl"
         >
           <div className="inline-flex items-center justify-center px-4 py-1 mb-6 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm">
-            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">Rasmiy Statistika Portali</span>
+            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+              Rasmiy Statistika Portali
+            </span>
           </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 drop-shadow-lg leading-tight">
-            O'zbekiston Banklarining <br/>
-            <span className="text-yellow-400">Milliy Reytingi</span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
-            Bank tizimining barqarorligi, o'sish dinamikasi va xizmatlar sifati bo'yicha mustaqil tahliliy ma'lumotlar.
-          </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* <button 
-              onClick={() => document.getElementById('rating')?.scrollIntoView({behavior: 'smooth'})}
-              className="px-8 py-3 bg-primary text-white font-medium rounded hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 drop-shadow-lg leading-tight">
+            Tijorat banklarning reyting koʻrsatkichlari. <br />
+          </h1>
+
+          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <img src={logo} alt="logo" width={100} height={100} />
+            <button
+              onClick={handleOpenPdf}
+              className="flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg transition-all duration-200 text-white font-medium shadow-lg hover:shadow-xl"
             >
-              Reytingni Ko'rish
+              <FileText className="h-5 w-5" />
+              <span>PDF faylni ochish</span>
             </button>
-            <button className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium rounded hover:bg-white/20 transition-colors">
-              Tahliliy Hisobotlar
-            </button> */}
-          </div>
+          </div> */}
         </motion.div>
       </div>
-      
+
       {/* Decorative Bottom Border */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-yellow-400" />
     </div>

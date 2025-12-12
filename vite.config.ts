@@ -23,6 +23,7 @@ export default defineConfig({
         ]
       : []),
   ],
+  assetsInclude: ['**/*.xlsx', '**/*.csv', '**/*.pdf'],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

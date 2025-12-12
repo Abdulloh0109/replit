@@ -1,18 +1,17 @@
 import PageLayout from "@/components/layout/PageLayout";
-import BankList from "@/components/ui/BankList";
-import { banks } from "@/lib/mockData";
+import DynamicBankTable from "@/components/sections/BankTable";
+import { useExcelFileStore } from "@/lib/store";
 
 export default function StateBanks() {
-  const stateBanks = banks.filter(b => b.type === 'state');
+  const { excelFile } = useExcelFileStore();
 
   return (
     <PageLayout>
       <div className="py-8">
-        <BankList 
-          title="Davlat Banklari Reytingi" 
+        <DynamicBankTable
+          table={excelFile?.[3]?.data}
+          title="Davlat Banklari Reytingi"
           description="Davlat ulushi mavjud bo'lgan banklarning moliyaviy holati."
-          data={stateBanks}
-          showRankHighlight={true}
         />
       </div>
     </PageLayout>

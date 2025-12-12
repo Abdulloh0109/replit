@@ -10,14 +10,15 @@ export default function Navbar() {
 
   const links = [
     { name: "Asosiy Sahifa", href: "/" },
-    { name: "Umumiy Reyting", href: "/general" },
-    { name: "O'sish Yetakchilari", href: "/growth" },
-    { name: "55 dan past", href: "/low-score" },
+    { name: "Filial Kesimida", href: "/filial-kesimida" },
+    { name: "Viloyat Banklari", href: "/viloyat-banklari" },
+    { name: "Shahar Va Tuman", href: "/shahar-va-tuman" },
     { name: "Davlat Banklari", href: "/state" },
-    { name: "Viloyat Banklari", href: "/regional" },
-    { name: "TOP-20", href: "/top-20" },
-    { name: "Shahar/Tuman", href: "/city-district" },
-    { name: "Xususiy Banklar", href: "/private" },
+    { name: "Xususiy Banklar", href: "/xususiy-banklar" },
+    { name: "Top-20", href: "/top-20" },
+    { name: "55 Baldan Past", href: "/55-baldan-past" },
+    { name: "Eng Katta Oʻsish", href: "/eng-katta-osish" },
+    { name: "Eng Katta Pasayish", href: "/eng-katta-pasayish" },
   ];
 
   return (
@@ -27,14 +28,16 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center space-x-1 w-full justify-center">
             {links.map((link) => (
               <Link key={link.href} href={link.href}>
-                <a
+                <div
                   className={cn(
                     "px-3 py-2 text-xs font-medium transition-all duration-200 rounded-md uppercase tracking-wide opacity-90 hover:opacity-100 hover:bg-white/10 text-center whitespace-nowrap",
-                    location === link.href ? "bg-white/20 text-white font-bold shadow-sm" : ""
+                    location === link.href
+                      ? "bg-white/20 text-white font-bold shadow-sm"
+                      : ""
                   )}
                 >
                   {link.name}
-                </a>
+                </div>
               </Link>
             ))}
           </div>
@@ -45,7 +48,11 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md hover:bg-white/10"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -66,7 +73,9 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block w-full text-left px-3 py-2 text-base font-medium hover:bg-white/10 rounded-md transition-colors",
-                    location === link.href ? "bg-white/20 text-white" : "text-blue-100"
+                    location === link.href
+                      ? "bg-white/20 text-white"
+                      : "text-blue-100"
                   )}
                 >
                   {link.name}
