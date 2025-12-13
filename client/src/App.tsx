@@ -18,6 +18,8 @@ import { useEffect } from "react";
 import excelFileUrl from "@/assets/exel.xlsx";
 import * as XLSX from "xlsx";
 import { useExcelFileStore } from "./lib/store";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
 
 function Router() {
   const { excelFile, setExcelFile } = useExcelFileStore();
@@ -54,8 +56,7 @@ function Router() {
       workbook.SheetNames.forEach((sheetName) => {
         const worksheet = workbook.Sheets[sheetName];
         const data = XLSX.utils.sheet_to_json(worksheet, {
-          header: 'A',        // Array-of-arrays (real structure)
-        
+          header: "A", // Array-of-arrays (real structure)
         });
 
         const cleaned = removeEmptyProperties(data);
@@ -81,19 +82,21 @@ function Router() {
   }, []);
 
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/filial-kesimida" component={GeneralRating} />
-      <Route path="/viloyat-banklari" component={RegionalRating} />
-      <Route path="/shahar-va-tuman" component={CityDistrictRating} />
-      <Route path="/state" component={StateBanks} />
-      <Route path="/xususiy-banklar" component={PrivateBanks} />
-      <Route path="/top-20" component={Top20} />
-      <Route path="/55-baldan-past" component={LowRating} />
-      <Route path="/eng-katta-osish" component={GrowthRating} />
-      <Route path="/eng-katta-pasayish" component={BiggestDecline} />
-      <Route component={NotFound} />
-    </Switch>
+    <div>
+
+      <Switch>
+        <Route path="/filial-kesimida" component={GeneralRating} />
+        <Route path="/viloyat-banklari" component={RegionalRating} />
+        <Route path="/shahar-va-tuman" component={CityDistrictRating} />
+        <Route path="/state" component={StateBanks} />
+        <Route path="/xususiy-banklar" component={PrivateBanks} />
+        <Route path="/top-20" component={Top20} />
+        <Route path="/55-baldan-past" component={LowRating} />
+        <Route path="/eng-katta-osish" component={GrowthRating} />
+        <Route path="/eng-katta-pasayish" component={BiggestDecline} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
   );
 }
 

@@ -1,5 +1,6 @@
 import PageLayout from "@/components/layout/PageLayout";
 import DynamicBankTable from "@/components/sections/BankTable";
+import SliderSection from "@/components/sections/Slider";
 import { useExcelFileStore } from "@/lib/store";
 
 export default function GeneralRating() {
@@ -7,8 +8,13 @@ export default function GeneralRating() {
   return (
     <PageLayout showHero={true}>
       <div className="py-8">
-        <DynamicBankTable table={excelFile?.[0]?.data} title="Filial Kesimida Reyting" description="Banklar reyting ko'rsatkichlari jadvali" />
+        <DynamicBankTable
+          table={excelFile?.[0]?.data}
+          title="Filial Kesimida Reyting"
+          description="Banklar reyting ko'rsatkichlari jadvali"
+        />
       </div>
+      <SliderSection />
     </PageLayout>
   );
 }

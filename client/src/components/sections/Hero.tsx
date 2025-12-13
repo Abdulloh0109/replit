@@ -30,7 +30,7 @@ export default function Hero() {
             className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
           >
             <FileText className="h-4 w-4 md:h-5 md:w-5" />
-            <span className="hidden sm:inline">Renking</span>
+            <span className="ml-1">Renking</span>
           </button>
         </div>
       </div>

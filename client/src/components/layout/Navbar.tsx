@@ -9,7 +9,6 @@ export default function Navbar() {
   const [location] = useLocation();
 
   const links = [
-    { name: "Asosiy Sahifa", href: "/" },
     { name: "Filial Kesimida", href: "/filial-kesimida" },
     { name: "Viloyat Banklari", href: "/viloyat-banklari" },
     { name: "Shahar Va Tuman", href: "/shahar-va-tuman" },
