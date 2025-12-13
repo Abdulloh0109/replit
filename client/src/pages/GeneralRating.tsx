@@ -14,7 +14,6 @@ export default function GeneralRating() {
           description="Banklar reyting ko'rsatkichlari jadvali"
         />
       </div>
-      <SliderSection />
     </PageLayout>
   );
 }
