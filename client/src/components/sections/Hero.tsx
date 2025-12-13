@@ -2,11 +2,15 @@ import { motion } from "framer-motion";
 import heroBg from "@assets/generated_images/professional_government_bank_building_with_blue_sky.png";
 import logo from "@/assets/CBU_Logo.svg.png";
 import pdfFile from "@/assets/10dan boshlangan.pdf";
+import pdfFile2 from "@/assets/1.pdf";
 import { FileText } from "lucide-react";
 
 export default function Hero() {
   const handleOpenPdf = () => {
     window.open(pdfFile, "_blank");
+  };
+  const handleOpenPdf2 = () => {
+    window.open(pdfFile2, "_blank");
   };
 
   return (
@@ -46,14 +50,22 @@ export default function Hero() {
             Tijorat banklarning reyting koʻrsatkichlari. <br />
           </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
+          <div className="flex  sm:flex-row gap-4 justify-center items-center">
+          <button
               onClick={handleOpenPdf}
               className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
             >
               <FileText className="h-4 w-4 md:h-5 md:w-5" />
               <span className="ml-1">Renking</span>
             </button>
+            <button
+              onClick={handleOpenPdf2}
+              className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
+            >
+              <FileText className="h-4 w-4 md:h-5 md:w-5" />
+              <span className="ml-1">Reyting tahlili</span>
+            </button>
+          
           </div>
         </motion.div>
       </div>
