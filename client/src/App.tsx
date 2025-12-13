@@ -77,23 +77,20 @@ function Router() {
     handleAssetFile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+console.log("excelFile", excelFile);
   return (
-    <div>
-
-      <Switch>
-        <Route path="/filial-kesimida" component={GeneralRating} />
-        <Route path="/viloyat-banklari" component={RegionalRating} />
-        <Route path="/shahar-va-tuman" component={CityDistrictRating} />
-        <Route path="/state" component={StateBanks} />
-        <Route path="/xususiy-banklar" component={PrivateBanks} />
-        <Route path="/top-20" component={Top20} />
-        <Route path="/55-baldan-past" component={LowRating} />
-        <Route path="/eng-katta-osish" component={GrowthRating} />
-        <Route path="/eng-katta-pasayish" component={BiggestDecline} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/filial-kesimida" component={GeneralRating} />
+      <Route path="/viloyat-banklari" component={RegionalRating} />
+      <Route path="/shahar-va-tuman" component={CityDistrictRating} />
+      <Route path="/state" component={StateBanks} />
+      <Route path="/xususiy-banklar" component={PrivateBanks} />
+      <Route path="/top-20" component={Top20} />
+      <Route path="/55-baldan-past" component={LowRating} />
+      <Route path="/eng-katta-osish" component={GrowthRating} />
+      <Route path="/eng-katta-pasayish" component={BiggestDecline} />
+      <Route component={NotFound} />
+    </Switch>
   );
 }
 
