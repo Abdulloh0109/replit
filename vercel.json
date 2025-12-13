@@ -3,7 +3,7 @@
   "outputDirectory": "dist/public",
   "rewrites": [
     {
-      "source": "/((?!assets|favicon|.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|pdf|xlsx|webmanifest)).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
