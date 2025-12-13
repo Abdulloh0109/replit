@@ -64,11 +64,27 @@ export default function DynamicBankTable({
     return !isNaN(num) && isFinite(num);
   };
 
-  // Raqamni formatlash - .dan keyin 2 ta raqam qoldirish
+  // Raqamni formatlash - faqat .dan keyin 2 ta yoki undan ko'p raqam bo'lsa formatNumber qilish
   const formatNumber = (value: any): string => {
     if (!isNumeric(value)) return value;
     const num = Number(value);
-    return num.toFixed(2);
+    // Agar butun raqam bo'lsa (nuqta yo'q), formatNumber qilmaslik
+    if (Number.isInteger(num)) {
+      return String(num);
+    }
+    // Asl qiymatni string sifatida tekshirish
+    const valueStr = String(value);
+    // Agar nuqta bo'lsa, .dan keyin nechta raqam borligini tekshirish
+    if (valueStr.includes('.')) {
+      const decimalPart = valueStr.split('.')[1];
+      // Agar .dan keyin 2 ta yoki undan ko'p raqam bo'lsa, formatNumber qilish
+      if (decimalPart && decimalPart.length >= 2) {
+        return num.toFixed(2);
+      }
+      // Agar .dan keyin 1 ta raqam bo'lsa, o'zgartirmaslik
+      return valueStr;
+    }
+    return String(num);
   };
 
   // Ball qiymatiga qarab rang berish
@@ -162,7 +178,7 @@ export default function DynamicBankTable({
                           "px-4 py-3 text-sm border-r border-slate-100 last:border-r-0",
                           isFirstColumn &&
                             "font-semibold text-slate-500 text-center w-16",
-                          isSecondColumn && "font-bold text-slate-800",
+                          isSecondColumn && "font-bold text-slate-800 min-w-[200px]",
                           !isFirstColumn &&
                             !isSecondColumn &&
                             isNumeric(cellValue) &&
