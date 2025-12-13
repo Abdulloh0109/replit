@@ -64,7 +64,7 @@ export default function DynamicBankTable({
     return !isNaN(num) && isFinite(num);
   };
 
-  // Raqamni formatlash - faqat .dan keyin 2 ta yoki undan ko'p raqam bo'lsa formatNumber qilish
+  // Raqamni formatlash - faqat .dan keyin 2 ta yoki undan ko'p raqam bo'lsa formatNumber qilish (yaxlitlash qilmasdan)
   const formatNumber = (value: any): string => {
     if (!isNumeric(value)) return value;
     const num = Number(value);
@@ -77,11 +77,14 @@ export default function DynamicBankTable({
     // Agar nuqta bo'lsa, .dan keyin nechta raqam borligini tekshirish
     if (valueStr.includes('.')) {
       const decimalPart = valueStr.split('.')[1];
-      // Agar .dan keyin 2 ta yoki undan ko'p raqam bo'lsa, formatNumber qilish
-      if (decimalPart && decimalPart.length >= 2) {
-        return num.toFixed(2);
+      // Agar .dan keyin 2 ta yoki undan ko'p raqam bo'lsa, faqat 2 ta raqam qoldirish (yaxlitlash qilmasdan)
+      if (decimalPart && decimalPart.length > 2) {
+        // Yaxlitlash qilmasdan, faqat kesib tashlash
+        const integerPart = valueStr.split('.')[0];
+        const truncatedDecimal = decimalPart.substring(0, 2);
+        return `${integerPart}.${truncatedDecimal}`;
       }
-      // Agar .dan keyin 1 ta raqam bo'lsa, o'zgartirmaslik
+      // Agar .dan keyin 1-2 ta raqam bo'lsa, o'zgartirmaslik
       return valueStr;
     }
     return String(num);
