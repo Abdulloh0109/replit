@@ -80,6 +80,7 @@ function Router() {
 console.log("excelFile", excelFile);
   return (
     <Switch>
+      <Route path="/" component={GeneralRating} />
       <Route path="/filial-kesimida" component={GeneralRating} />
       <Route path="/viloyat-banklari" component={RegionalRating} />
       <Route path="/shahar-va-tuman" component={CityDistrictRating} />
