@@ -23,15 +23,8 @@ export default function Hero() {
           <img
             src={logo}
             alt="CBU Logo"
-            className="h-10 w-auto md:h-14 lg:h-16 object-contain"
+            className="h-14 mt-2 w-auto md:h-16 lg:h-16 object-contain"
           />
-          <button
-            onClick={handleOpenPdf}
-            className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
-          >
-            <FileText className="h-4 w-4 md:h-5 md:w-5" />
-            <span className="ml-1">Renking</span>
-          </button>
         </div>
       </div>
 
@@ -53,16 +46,15 @@ export default function Hero() {
             Tijorat banklarning reyting koʻrsatkichlari. <br />
           </h1>
 
-          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <img src={logo} alt="logo" width={100} height={100} />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={handleOpenPdf}
-              className="flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg transition-all duration-200 text-white font-medium shadow-lg hover:shadow-xl"
+              className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
             >
-              <FileText className="h-5 w-5" />
-              <span>PDF faylni ochish</span>
+              <FileText className="h-4 w-4 md:h-5 md:w-5" />
+              <span className="ml-1">Renking</span>
             </button>
-          </div> */}
+          </div>
         </motion.div>
       </div>
 

@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { cyrToLat } from "@/hooks/cyrToLat";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 export default function DynamicBankTable({
   table,
@@ -94,13 +96,13 @@ export default function DynamicBankTable({
             <thead className="sticky top-0 z-10">
               {/* HEADER 1 */}
               <tr className="bg-gradient-to-b from-slate-50 to-slate-100 border-b-2 border-slate-200">
-                {columns.map((col, idx) => (
+                {columns.map((col: any, idx: number) => (
                   <th
                     key={idx}
                     className="px-4 py-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-r border-slate-200 last:border-r-0 "
                   >
                     <div className="flex items-center justify-center">
-                      {headerRow[col]}
+                      {cyrToLat(headerRow[col])}
                     </div>
                   </th>
                 ))}
@@ -120,9 +122,7 @@ export default function DynamicBankTable({
                     normRow[col] === undefined ||
                     normRow[col] === ""
                       ? "-"
-                      : isNumeric(normRow[col])
-                      ? formatNumber(normRow[col])
-                      : normRow[col]}
+                      : cyrToLat(String(normRow[col]))}
                   </th>
                 ))}
               </tr>
@@ -141,7 +141,20 @@ export default function DynamicBankTable({
                     const cellValue = row[col];
                     const isFirstColumn = colIndex === 0;
                     const isSecondColumn = colIndex === 1;
-
+                    const isRatingChangeColumn = headerRow[col] === 'рейтинг ўзгариши';
+                    
+                    // Reyting o'zgarishi uchun icon aniqlash
+                    const getRatingIcon = () => {
+                      if (!isRatingChangeColumn || !isNumeric(cellValue)) return null;
+                      const num = Number(cellValue);
+                      if (num > 0) {
+                        return <TrendingUp className="h-4 w-4 text-green-600 inline-block ml-1" />;
+                      } else if (num < 0) {
+                        return <TrendingDown className="h-4 w-4 text-red-600 inline-block ml-1" />;
+                      }
+                      return null;
+                    };
+                    
                     return (
                       <td
                         key={colIndex}
@@ -166,27 +179,28 @@ export default function DynamicBankTable({
                             cellValue === undefined ||
                             cellValue === ""
                               ? "-"
-                              : cellValue}
+                              : cyrToLat(String(cellValue))}
                           </span>
                         ) : isSecondColumn ? (
-                          <span className="text-slate-800">
+                          <span className="text-slate-800 min-w-[200px]">
                             {cellValue === null ||
                             cellValue === undefined ||
                             cellValue === ""
                               ? "-"
                               : isNumeric(cellValue)
                               ? formatNumber(cellValue)
-                              : cellValue}
+                              : cyrToLat(String(cellValue))}
                           </span>
                         ) : (
-                          <span>
+                          <span className="flex items-center justify-center gap-1">
                             {cellValue === null ||
                             cellValue === undefined ||
                             cellValue === ""
                               ? "-"
                               : isNumeric(cellValue)
                               ? formatNumber(cellValue)
-                              : cellValue}
+                              : cyrToLat(String(cellValue))}
+                            {getRatingIcon()}
                           </span>
                         )}
                       </td>
