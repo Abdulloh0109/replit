@@ -118,16 +118,16 @@ export default function PageLayout({
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center space-x-2">
                   <MapPin className="h-4 w-4" />
-                  <span>Toshkent sh., Islom Karimov ko'chasi, 1</span>
+                  <span>Тошкент шаҳар, Абдулла Қодирий кўчаси 1а уй</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Phone className="h-4 w-4" />
-                  <span>+998 71 200-00-00</span>
+                  <span>+998 71-214-10-82</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                {/* <li className="flex items-center space-x-2">
                   <Mail className="h-4 w-4" />
                   <span>info@bankrating.uz</span>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
