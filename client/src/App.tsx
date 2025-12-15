@@ -17,11 +17,11 @@ import { useEffect } from "react";
 import excelFileUrl from "@/assets/exel.xlsx";
 import * as XLSX from "xlsx";
 import { useExcelFileStore } from "./lib/store";
+import RatingsPage from "./pages/Ratings";
+import TrendPage from "./pages/Trand";
 
 function Router() {
   const { excelFile, setExcelFile } = useExcelFileStore();
-
-  // console.log("excelFile", excelFile);
 
   function removeEmptyProperties(data: any) {
     return data.map((entry: any) => {
@@ -66,7 +66,7 @@ function Router() {
       });
 
       setExcelFile(allSheetsData);
-      console.log("Assetdan o'qilgan barcha sheets:", allSheetsData);
+      // console.log("Assetdan o'qilgan barcha sheets:", allSheetsData);
     } catch (error) {
       console.error("Asset faylni o'qishda xato:", error);
       setExcelFile(null);
@@ -77,10 +77,12 @@ function Router() {
     handleAssetFile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-console.log("excelFile", excelFile);
+  // console.log("excelFile", excelFile);
   return (
     <Switch>
       <Route path="/" component={GeneralRating} />
+      <Route path="/trend" component={TrendPage} />
+      <Route path="/ratings/:name" component={RatingsPage} />
       <Route path="/filial-kesimida" component={GeneralRating} />
       <Route path="/viloyat-banklari" component={RegionalRating} />
       <Route path="/shahar-va-tuman" component={CityDistrictRating} />

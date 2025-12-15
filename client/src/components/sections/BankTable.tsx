@@ -2,17 +2,21 @@ import { cn } from "@/lib/utils";
 import { cyrToLat } from "@/hooks/cyrToLat";
 import { TrendingUp, TrendingDown, Search } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 export default function DynamicBankTable({
   table,
   title,
   description,
+  toHref,
 }: {
   table: any;
   title?: string;
   description?: string;
+  toHref?: string;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [, setLocation] = useLocation();
 
   if (!table || table.length === 0) return null;
 
@@ -20,45 +24,9 @@ export default function DynamicBankTable({
   const normRow = table[1]; // 2-qator: meʼyor ball
   const bodyRows = table.slice(2); // qolgan satrlar
 
-  // Oylar bilan bog'liq ustunlarni filter qilish
-  const isMonthColumn = (headerValue: any): boolean => {
-    if (!headerValue) return false;
-    const headerStr = String(headerValue).toLowerCase();
-    // "2024 йил", "январь", "февраль", "март" va hokazo so'zlarni tekshirish
-    const monthKeywords = [
-      "йил",
-      "январь",
-      "февраль",
-      "март",
-      "апрель",
-      "май",
-      "июнь",
-      "июль",
-      "август",
-      "сентябр",
-      "октябрь",
-      "ноябрь",
-      "декабрь",
-      "ҳолатига",
-      "январ",
-      "феврал",
-      "март",
-      "апрел",
-      "май",
-      "июн",
-      "июл",
-      "август",
-      "сентябр",
-      "октябр",
-      "ноябр",
-      "декабр",
-    ];
-    return monthKeywords.some((keyword) => headerStr.includes(keyword));
-  };
 
-  // Faqat oylar bilan bog'liq bo'lmagan ustunlarni qoldirish
   const allColumns = Object.keys(headerRow);
-  const columns = allColumns.filter((col) => !isMonthColumn(headerRow[col]));
+  const columns = allColumns;
 
   // "Тижорат банклари номи" ustunini topish
   const bankNameColumn = columns.find(
@@ -67,6 +35,22 @@ export default function DynamicBankTable({
       String(headerRow[col]).toLowerCase().includes('банк') ||
       String(headerRow[col]).toLowerCase().includes('номи')
   );
+
+  // Bank nomini URL-safe qilish
+  const getBankUrl = (bankName: any): string => {
+    if (!bankName) return "";
+    const name = cyrToLat(String(bankName));
+    // URL-safe qilish: bo'shliqlarni tire bilan almashtirish va maxsus belgilarni olib tashlash
+    const urlSafe = encodeURIComponent(name.trim().replace(/\s+/g, '-').toLowerCase());
+    return `/ratings/${urlSafe}`;
+  };
+
+  // Bank nomiga bosilganda navigation
+  const handleBankNameClick = (bankName: any) => {
+    if (!bankName) return;
+    const url = getBankUrl(bankName);
+    setLocation(url);
+  };
 
   // Search filter qilish
   const filteredRows = searchQuery
@@ -236,7 +220,13 @@ export default function DynamicBankTable({
                               : cyrToLat(String(cellValue))}
                           </span>
                         ) : isSecondColumn ? (
-                          <span className="text-slate-800 min-w-[200px]">
+                          <span 
+                            className={cn(
+                              "text-slate-800 min-w-[200px]",
+                              bankNameColumn === col && toHref ? "cursor-pointer hover:text-primary hover:underline transition-colors" : ""
+                            )}
+                            onClick={() => toHref ? bankNameColumn === col && handleBankNameClick(cellValue) : {}}
+                          >
                             {cellValue === null ||
                             cellValue === undefined ||
                             cellValue === ""

@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: "55 Baldan Past", href: "/55-baldan-past" },
     { name: "Eng Katta Oʻsish", href: "/eng-katta-osish" },
     { name: "Eng Katta Pasayish", href: "/eng-katta-pasayish" },
+    { name: "Trend", href: "/trend" },
   ];
 
   return (

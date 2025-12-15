@@ -51,7 +51,7 @@ export default function Hero() {
           </div>
 
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-serif font-bold text-white mb-6 drop-shadow-lg leading-tight">
-           Tijorat banklarining reyting ko'rsatgichlari <br />
+            Tijorat banklarining reyting ko'rsatkichlari <br />
             <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
               2025-yil noyabr oyi bo‘yicha reytinglar
             </span>
