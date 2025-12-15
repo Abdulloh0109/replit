@@ -10,7 +10,7 @@ export default function StateBanks() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[3]?.data}
-          title="Davlat Banklari Reytingi"
+          title="Davlat banklari reytingi"
           description="Davlat ulushi mavjud bo'lgan banklarning moliyaviy holati."
         />
       </div>

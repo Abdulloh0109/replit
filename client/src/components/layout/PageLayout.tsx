@@ -14,7 +14,7 @@ export default function PageLayout({
 }: PageLayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
-      {<Hero />}
+      <Hero />
       <Navbar />
 
       <main className="flex-1 bg-slate-50/50">
@@ -44,7 +44,7 @@ export default function PageLayout({
                     href="/filial-kesimida"
                     className="hover:text-white transition-colors"
                   >
-                    Filial Kesimida
+                    Filial kesimida
                   </a>
                 </li>
                 <li>
@@ -52,7 +52,7 @@ export default function PageLayout({
                     href="/viloyat-banklari"
                     className="hover:text-white transition-colors"
                   >
-                    Viloyat Banklari
+                    Viloyat banklari
                   </a>
                 </li>
                 <li>
@@ -60,7 +60,7 @@ export default function PageLayout({
                     href="/shahar-va-tuman"
                     className="hover:text-white transition-colors"
                   >
-                    Shahar Va Tuman
+                    Shahar va tuman
                   </a>
                 </li>
                 <li>
@@ -68,7 +68,7 @@ export default function PageLayout({
                     href="/state"
                     className="hover:text-white transition-colors"
                   >
-                    Davlat Banklari
+                    Davlat banklari
                   </a>
                 </li>
                 <li>
@@ -76,7 +76,7 @@ export default function PageLayout({
                     href="/xususiy-banklar"
                     className="hover:text-white transition-colors"
                   >
-                    Xususiy Banklar
+                    Xususiy banklar
                   </a>
                 </li>
                 <li>
@@ -92,7 +92,7 @@ export default function PageLayout({
                     href="/55-baldan-past"
                     className="hover:text-white transition-colors"
                   >
-                    55 Baldan Past
+                    55 baldan past
                   </a>
                 </li>
                 <li>
@@ -100,7 +100,7 @@ export default function PageLayout({
                     href="/eng-katta-osish"
                     className="hover:text-white transition-colors"
                   >
-                    Eng Katta Oʻsish
+                    Eng katta oʻsish
                   </a>
                 </li>
                 <li>
@@ -108,7 +108,7 @@ export default function PageLayout({
                     href="/eng-katta-pasayish"
                     className="hover:text-white transition-colors"
                   >
-                    Eng Katta Pasayish
+                    Eng katta pasayish
                   </a>
                 </li>
               </ul>

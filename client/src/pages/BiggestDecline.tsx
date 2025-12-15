@@ -10,7 +10,7 @@ export default function BiggestDecline() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[8]?.data}
-          title="Eng Katta Pasayish"
+          title="Eng katta pasayish"
           description="Yillik pasayish dinamikasi bo'yicha banklar ro'yxati."
         />
       </div>

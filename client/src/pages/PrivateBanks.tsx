@@ -10,7 +10,7 @@ export default function PrivateBanks() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[4]?.data}
-          title="Xususiy Banklar Reytingi"
+          title="Xususiy banklar reytingi"
           description="Xususiy kapital asosida faoliyat yurituvchi banklarning moliyaviy holati."
         />
       </div>

@@ -10,7 +10,7 @@ export default function LowRating() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[6]?.data}
-          title="55 Baldan Past"
+          title="55 baldan past"
           description="55 balldan past banklar reytingi."
         />
       </div>

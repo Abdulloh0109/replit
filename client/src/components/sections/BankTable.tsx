@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { cyrToLat } from "@/hooks/cyrToLat";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { TrendingUp, TrendingDown, Search } from "lucide-react";
+import { useState } from "react";
 
 export default function DynamicBankTable({
   table,
@@ -11,6 +12,8 @@ export default function DynamicBankTable({
   title?: string;
   description?: string;
 }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
   if (!table || table.length === 0) return null;
 
   const headerRow = table[0]; // 1-qator: nomlar
@@ -56,6 +59,24 @@ export default function DynamicBankTable({
   // Faqat oylar bilan bog'liq bo'lmagan ustunlarni qoldirish
   const allColumns = Object.keys(headerRow);
   const columns = allColumns.filter((col) => !isMonthColumn(headerRow[col]));
+
+  // "Тижорат банклари номи" ustunini topish
+  const bankNameColumn = columns.find(
+    (col) => 
+      String(headerRow[col]).toLowerCase().includes('тижорат') ||
+      String(headerRow[col]).toLowerCase().includes('банк') ||
+      String(headerRow[col]).toLowerCase().includes('номи')
+  );
+
+  // Search filter qilish
+  const filteredRows = searchQuery
+    ? bodyRows.filter((row: any) => {
+        if (!bankNameColumn) return true;
+        const bankName = String(cyrToLat(row[bankNameColumn]) || "").toLowerCase();
+        const query = cyrToLat(searchQuery).toLowerCase();
+        return cyrToLat(bankName).includes(query);
+      })
+    : bodyRows;
 
   // Raqam yoki ball ekanligini tekshirish
   const isNumeric = (value: any): boolean => {
@@ -106,6 +127,20 @@ export default function DynamicBankTable({
       <div className="bg-gradient-to-r from-primary via-primary/95 to-primary/90 p-6 border-b border-primary/20">
         <h2 className="text-2xl font-serif font-bold text-white">{title}</h2>
         <p className="text-blue-100 mt-2 text-sm">{description}</p>
+        
+        {/* Search Input */}
+        <div className="mt-4 max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/70" />
+            <input
+              type="text"
+              placeholder="Тижорат банклари номи bo'yicha qidirish..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Table Container */}
@@ -148,7 +183,7 @@ export default function DynamicBankTable({
             </thead>
 
             <tbody className="divide-y divide-slate-100 bg-white">
-              {bodyRows.map((row: any, rowIndex: number) => (
+              {filteredRows.map((row: any, rowIndex: number) => (
                 <tr
                   key={rowIndex}
                   className={cn(
@@ -235,11 +270,23 @@ export default function DynamicBankTable({
       {/* Footer Info */}
       <div className="bg-slate-50 px-6 py-4 border-t border-slate-200">
         <p className="text-xs text-slate-500 text-center">
-          Jami:{" "}
-          <span className="font-semibold text-slate-700">
-            {bodyRows.length}
-          </span>{" "}
-          ta bank
+          {searchQuery ? (
+            <>
+              Topildi:{" "}
+              <span className="font-semibold text-slate-700">
+                {filteredRows.length}
+              </span>{" "}
+              ta bank (Jami: {bodyRows.length})
+            </>
+          ) : (
+            <>
+              Jami:{" "}
+              <span className="font-semibold text-slate-700">
+                {bodyRows.length}
+              </span>{" "}
+              ta bank
+            </>
+          )}
         </p>
       </div>
     </div>

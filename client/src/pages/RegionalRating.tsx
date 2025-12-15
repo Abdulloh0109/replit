@@ -9,7 +9,7 @@ export default function RegionalRating() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[1]?.data}
-          title="Viloyat Banklari Reytingi"
+          title="Viloyat banklari reytingi"
           description="O'zbekiston tijorat banklarining viloyat kesimida to'liq reytingi. Moliyaviy barqarorlik va ishonchlilik ko'rsatkichlari."
         />
       </div>

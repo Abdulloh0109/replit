@@ -10,7 +10,7 @@ export default function GeneralRating() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[0]?.data}
-          title="Filial Kesimida Reyting"
+          title="Filial kesimida reyting"
           description="Banklar reyting ko'rsatkichlari jadvali"
         />
       </div>
