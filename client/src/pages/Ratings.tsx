@@ -195,12 +195,14 @@ export default function RatingsPage() {
         },
       },
       yaxis: {
+        min: 0,
+        max: 100,
         labels: {
           style: {
             colors: "#64748b",
             fontSize: "12px",
           },
-          formatter: (value: number) => value.toFixed(2),
+          formatter: (value: number) => value + "%",
         },
         title: {
           text: "Reyting",
