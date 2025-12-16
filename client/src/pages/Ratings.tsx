@@ -251,7 +251,7 @@ export default function RatingsPage() {
       <div>
         {/* Back Button */}
         <button
-          onClick={() => setLocation("/")}
+          onClick={() => setLocation("/trend")}
           className="flex items-center gap-2 mb-6 text-slate-600 hover:text-primary transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
