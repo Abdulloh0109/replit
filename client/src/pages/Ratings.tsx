@@ -266,11 +266,7 @@ export default function RatingsPage() {
             {/* Bank Name Header */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-slate-200 p-6">
               <h1 className="text-3xl font-serif font-bold text-slate-900 mb-2">
-                {bankData.name ||
-                  (decodedBankName && decodedBankName.length > 0
-                    ? decodedBankName[0].toUpperCase() +
-                      decodedBankName.slice(1)
-                    : "Bank ma'lumotlari")}
+                {decodedBankName[0].toUpperCase() + decodedBankName.slice(1)}
               </h1>
               <p className="text-slate-600">Reyting ko'rsatkichlari tahlili</p>
             </div>
