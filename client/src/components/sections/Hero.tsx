@@ -73,7 +73,7 @@ export default function Hero() {
               <span className="ml-1">Reyting tahlili</span>
             </button>
           </div>
-          <div className="flex items-center justify-center mt-4">
+          {/* <div className="flex items-center justify-center mt-4">
             <button
               onClick={handleOpenReyting}
               className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
@@ -81,7 +81,7 @@ export default function Hero() {
               <FileText className="h-4 w-4 md:h-5 md:w-5" />
               <span className="ml-1">Trendni ko’rish</span>
             </button>
-          </div>
+          </div> */}
         </motion.div>
       </div>
 
