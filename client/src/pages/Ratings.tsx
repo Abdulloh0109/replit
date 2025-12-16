@@ -219,12 +219,12 @@ export default function RatingsPage() {
       tooltip: {
         theme: "light",
         y: {
-          formatter: (value: number) => value.toFixed(2),
+          formatter: (value: number) => value.toFixed(1),
         },
       },
       dataLabels: {
         enabled: true,
-        formatter: (value: number) => value.toFixed(2) + "%",
+        formatter: (value: number) => value.toFixed(1) + "%",
         style: {
           fontSize: "12px",
           fontWeight: 600,
