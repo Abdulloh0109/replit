@@ -222,6 +222,16 @@ export default function RatingsPage() {
           formatter: (value: number) => value.toFixed(2),
         },
       },
+      dataLabels: {
+        enabled: true,
+        formatter: (value: number) => value.toFixed(2) + "%",
+        style: {
+          fontSize: "12px",
+          fontWeight: 600,
+          colors: ["#0b4b6f"],
+        },
+        offsetY: -10,
+      },
       colors: ["#0b4b6f"],
     };
 
