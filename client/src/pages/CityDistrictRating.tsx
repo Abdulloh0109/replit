@@ -10,7 +10,7 @@ export default function CityDistrictRating() {
       <div className="py-8">
         <DynamicBankTable
           table={excelFile?.[2]?.data}
-          name="shahar va tuman"
+          name="Shahar va tuman"
           title="Shahar va tuman kesimida reyting"
           description="Shahar va tuman kesimida banklar reytingi"
         />

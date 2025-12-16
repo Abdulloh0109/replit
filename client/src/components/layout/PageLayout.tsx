@@ -64,14 +64,14 @@ export default function PageLayout({
             {/* Sections - Split into 2 columns if many items */}
             <div className="md:col-span-2">
               <h4 className="text-white font-bold mb-5 text-lg">Bo'limlar</h4>
-              <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
                 {footerSections.map((section, index) => (
                   <a
                     key={index}
                     href={section.href}
-                    className="text-sm hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
+                    className="text-sm"
                   >
-                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  
                     <span>{section.label}</span>
                   </a>
                 ))}
