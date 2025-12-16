@@ -104,23 +104,6 @@ export default function RatingsPage() {
     const months: string[] = [];
     const values: number[] = [];
 
-    // Oylar mapping - object key'lari bilan moslash
-    const monthMapping: { [key: string]: string } = {
-      // Object key'lari (katta-kichik harflar bilan)
-      yanvar: "Yanvar",
-      fevral: "Fevral",
-      mart: "Mart",
-      aprel: "Aprel",
-      may: "May",
-      iyun: "Iyun",
-      iyul: "Iyul",
-      avgust: "Avgust",
-      sentyabr: "Sentabr",
-      oktabr: "Oktabr",
-      noyabr: "Noyabr",
-      dekabr: "Dekabr",
-    };
-
     const monthOrder = [
       "Yanvar",
       "Fevral",
@@ -143,7 +126,9 @@ export default function RatingsPage() {
       const keyLower = key.toLowerCase().trim();
 
       // Mapping'dan oy nomini topish
-      const mappedMonth = monthMapping[keyLower];
+      const mappedMonth = monthOrder.find(
+        (month) => month.toLowerCase().trim() === keyLower
+      );
 
       if (mappedMonth && monthOrder.includes(mappedMonth)) {
         const value = bankData[key];
