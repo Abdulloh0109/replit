@@ -9,11 +9,13 @@ export default function DynamicBankTable({
   title,
   description,
   toHref,
+  name = "bank",
 }: {
   table: any;
   title?: string;
   description?: string;
   toHref?: string;
+  name?: string;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [, setLocation] = useLocation();
@@ -274,7 +276,7 @@ export default function DynamicBankTable({
               <span className="font-semibold text-slate-700">
                 {bodyRows.length}
               </span>{" "}
-              ta bank
+              ta {name}
             </>
           )}
         </p>
