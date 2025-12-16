@@ -6,16 +6,18 @@ import { ReactNode } from "react";
 interface PageLayoutProps {
   children: ReactNode;
   showHero?: boolean;
+  showNavbar?: boolean;
 }
 
 export default function PageLayout({
   children,
   showHero = false,
+  showNavbar = true,
 }: PageLayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
       <Hero />
-      <Navbar />
+     {showNavbar && <Navbar />}
 
       <main className="flex-1 bg-slate-50/50">
         <div className="container mx-auto px-4 py-8">{children}</div>

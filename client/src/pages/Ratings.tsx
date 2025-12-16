@@ -247,8 +247,8 @@ export default function RatingsPage() {
   }, [bankData]);
 
   return (
-    <PageLayout>
-      <div className="py-8">
+    <PageLayout showNavbar={false}>
+      <div>
         {/* Back Button */}
         <button
           onClick={() => setLocation("/")}
