@@ -4,8 +4,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html",
-      "status": 503
+      "destination": "/index1.html"
     }
   ],
   "headers": [
