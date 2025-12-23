@@ -3,7 +3,7 @@ import heroBg from "@assets/generated_images/professional_government_bank_buildi
 import logo from "@/assets/CBU_Logo.svg.png";
 import pdfFile from "@/assets/10dan boshlangan.pdf";
 import pdfFile2 from "@/assets/1.pdf";
-import pdfFileReyting from "@/assets/5_oylik_reting.pdf";
+import pdfFileReyting from "@/assets/Бўлимларни Бахолаш.pdf";
 import { FileText } from "lucide-react";
 
 export default function Hero() {
@@ -73,15 +73,15 @@ export default function Hero() {
               <span className="ml-1">Reyting tahlili</span>
             </button>
           </div>
-          {/* <div className="flex items-center justify-center mt-4">
+          <div className="flex items-center justify-center mt-4">
             <button
               onClick={handleOpenReyting}
               className="flex items-center cursor-pointer px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md md:rounded-lg transition-all duration-200 text-white text-xs md:text-sm font-medium shadow-lg hover:shadow-xl"
             >
               <FileText className="h-4 w-4 md:h-5 md:w-5" />
-              <span className="ml-1">Trendni ko’rish</span>
+              <span className="ml-1">Tarkibiy bo’limlar bo’yicha reyting</span>
             </button>
-          </div> */}
+          </div>
         </motion.div>
       </div>
 
