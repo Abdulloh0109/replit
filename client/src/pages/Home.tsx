@@ -1,12 +1,9 @@
 import { Building2, Phone, Mail, MapPin } from "lucide-react";
-import SliderSection from "@/components/sections/Slider";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
       <main className="flex-1">
-        {/* <SliderSection /> */}
-
         {/* Additional Info / CTA */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">

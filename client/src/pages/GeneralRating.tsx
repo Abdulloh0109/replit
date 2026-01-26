@@ -1,6 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
 import DynamicBankTable from "@/components/sections/BankTable";
-import SliderSection from "@/components/sections/Slider";
 import { useExcelFileStore } from "@/lib/store";
 
 export default function GeneralRating() {
@@ -14,7 +13,6 @@ export default function GeneralRating() {
           description="Banklar reyting ko'rsatkichlari jadvali"
         />
       </div>
-      {/* <SliderSection /> */}
     </PageLayout>
   );
 }
