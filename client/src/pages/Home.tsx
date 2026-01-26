@@ -1,16 +1,11 @@
-import Navbar from "@/components/layout/Navbar";
-import Hero from "@/components/sections/Hero";
-import BankTable from "@/components/sections/BankTable";
 import { Building2, Phone, Mail, MapPin } from "lucide-react";
 import SliderSection from "@/components/sections/Slider";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
-
-
       <main className="flex-1">
-        <SliderSection />
+        {/* <SliderSection /> */}
 
         {/* Additional Info / CTA */}
         <section className="py-20 bg-primary text-primary-foreground">

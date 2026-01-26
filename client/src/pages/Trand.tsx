@@ -15,7 +15,7 @@ export default function TrendPage() {
           toHref="true"
         />
       </div>
-      <SliderSection />
+      {/* <SliderSection /> */}
     </PageLayout>
   );
 }

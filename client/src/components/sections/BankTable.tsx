@@ -26,16 +26,24 @@ export default function DynamicBankTable({
   const normRow = table[1]; // 2-qator: meʼyor ball
   const bodyRows = table.slice(2); // qolgan satrlar
 
-
   const allColumns = Object.keys(headerRow);
   const columns = allColumns;
 
   // "Тижорат банклари номи" ustunini topish
   const bankNameColumn = columns.find(
-    (col) => 
-      String(headerRow[col]).toLowerCase().includes('тижорат') ||
-      String(headerRow[col]).toLowerCase().includes('банк') ||
-      String(headerRow[col]).toLowerCase().includes('номи')
+    (col) =>
+      String(headerRow[col]).toLowerCase().includes("тижорат") ||
+      String(headerRow[col]).toLowerCase().includes("банк") ||
+      String(headerRow[col]).toLowerCase().includes("номи"),
+  );
+
+  // Maqsadli ustun: 'молиявий қўллаб-қувватлаш' bilan bog'liq uzun sarlavha
+  const targetColumn = columns.find(
+    (col) =>
+      String(headerRow[col]).toLowerCase().includes("молиявий қўллаб") ||
+      String(headerRow[col])
+        .toLowerCase()
+        .includes("тадбиркорлик субъектларини"),
   );
 
   // Bank nomini URL-safe qilish
@@ -43,7 +51,9 @@ export default function DynamicBankTable({
     if (!bankName) return "";
     const name = cyrToLat(String(bankName));
     // URL-safe qilish: bo'shliqlarni tire bilan almashtirish va maxsus belgilarni olib tashlash
-    const urlSafe = encodeURIComponent(name.trim().replace(/\s+/g, '-').toLowerCase());
+    const urlSafe = encodeURIComponent(
+      name.trim().replace(/\s+/g, "-").toLowerCase(),
+    );
     return `/ratings/${urlSafe}`;
   };
 
@@ -58,7 +68,9 @@ export default function DynamicBankTable({
   const filteredRows = searchQuery
     ? bodyRows.filter((row: any) => {
         if (!bankNameColumn) return true;
-        const bankName = String(cyrToLat(row[bankNameColumn]) || "").toLowerCase();
+        const bankName = String(
+          cyrToLat(row[bankNameColumn]) || "",
+        ).toLowerCase();
         const query = cyrToLat(searchQuery).toLowerCase();
         return cyrToLat(bankName).includes(query);
       })
@@ -82,12 +94,12 @@ export default function DynamicBankTable({
     // Asl qiymatni string sifatida tekshirish
     const valueStr = String(value);
     // Agar nuqta bo'lsa, .dan keyin nechta raqam borligini tekshirish
-    if (valueStr.includes('.')) {
-      const decimalPart = valueStr.split('.')[1];
+    if (valueStr.includes(".")) {
+      const decimalPart = valueStr.split(".")[1];
       // Agar .dan keyin 2 ta yoki undan ko'p raqam bo'lsa, faqat 2 ta raqam qoldirish (yaxlitlash qilmasdan)
       if (decimalPart && decimalPart.length > 2) {
         // Yaxlitlash qilmasdan, faqat kesib tashlash
-        const integerPart = valueStr.split('.')[0];
+        const integerPart = valueStr.split(".")[0];
         const truncatedDecimal = decimalPart.substring(0, 2);
         return `${integerPart}.${truncatedDecimal}`;
       }
@@ -113,7 +125,7 @@ export default function DynamicBankTable({
       <div className="bg-gradient-to-r from-primary via-primary/95 to-primary/90 p-6 border-b border-primary/20">
         <h2 className="text-2xl font-serif font-bold text-white">{title}</h2>
         <p className="text-blue-100 mt-2 text-sm">{description}</p>
-        
+
         {/* Search Input */}
         <div className="mt-4 max-w-md">
           <div className="relative">
@@ -131,7 +143,7 @@ export default function DynamicBankTable({
 
       {/* Table Container */}
       <div className="overflow-x-auto ">
-        <div className="min-w-full">
+        <div className="min-w-full min-h-max max-h-[800px]">
           <table className="w-full border-collapse">
             <thead className="sticky top-0 z-10">
               {/* HEADER 1 */}
@@ -139,7 +151,9 @@ export default function DynamicBankTable({
                 {columns.map((col: any, idx: number) => (
                   <th
                     key={idx}
-                    className="px-4 py-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-r border-slate-200 last:border-r-0 "
+                    className={cn(
+                      "px-4 py-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-r border-slate-200 last:border-r-0",
+                    )}
                   >
                     <div className="flex items-center justify-center">
                       {cyrToLat(headerRow[col])}
@@ -155,7 +169,7 @@ export default function DynamicBankTable({
                     key={idx}
                     className={cn(
                       "px-4 py-3 text-xs font-bold text-slate-700 border-r border-blue-200 last:border-r-0",
-                      isNumeric(normRow[col]) && "text-blue-800"
+                      isNumeric(normRow[col]) && "text-blue-800",
                     )}
                   >
                     {normRow[col] === null ||
@@ -174,35 +188,43 @@ export default function DynamicBankTable({
                   key={rowIndex}
                   className={cn(
                     "transition-all duration-150 hover:bg-slate-50 hover:shadow-sm",
-                    rowIndex % 2 === 0 ? "bg-white" : "bg-slate-50/30"
+                    rowIndex % 2 === 0 ? "bg-white" : "bg-slate-50/30",
                   )}
                 >
                   {columns.map((col, colIndex) => {
                     const cellValue = row[col];
                     const isFirstColumn = colIndex === 0;
                     const isSecondColumn = colIndex === 1;
-                    const isRatingChangeColumn = headerRow[col] === 'рейтинг ўзгариши';
-                    
+                    const isRatingChangeColumn =
+                      headerRow[col] === "рейтинг ўзгариши";
+
                     // Reyting o'zgarishi uchun icon aniqlash
                     const getRatingIcon = () => {
-                      if (!isRatingChangeColumn || !isNumeric(cellValue)) return null;
+                      if (!isRatingChangeColumn || !isNumeric(cellValue))
+                        return null;
                       const num = Number(cellValue);
                       if (num > 0) {
-                        return <TrendingUp className="h-4 w-4 text-green-600 inline-block ml-1" />;
+                        return (
+                          <TrendingUp className="h-4 w-4 text-green-600 inline-block ml-1" />
+                        );
                       } else if (num < 0) {
-                        return <TrendingDown className="h-4 w-4 text-red-600 inline-block ml-1" />;
+                        return (
+                          <TrendingDown className="h-4 w-4 text-red-600 inline-block ml-1" />
+                        );
                       }
                       return null;
                     };
-                    
+
                     return (
                       <td
                         key={colIndex}
                         className={cn(
                           "px-4 py-3 text-sm border-r border-slate-100 last:border-r-0",
+                          targetColumn === col && "text-lg",
                           isFirstColumn &&
                             "font-semibold text-slate-500 text-center w-16",
-                          isSecondColumn && "font-bold text-slate-800 min-w-[200px]",
+                          isSecondColumn &&
+                            "font-bold text-slate-800 min-w-[200px]",
                           !isFirstColumn &&
                             !isSecondColumn &&
                             isNumeric(cellValue) &&
@@ -210,7 +232,7 @@ export default function DynamicBankTable({
                           !isFirstColumn &&
                             !isSecondColumn &&
                             !isNumeric(cellValue) &&
-                            "text-slate-700 text-center"
+                            "text-slate-700 text-center",
                         )}
                       >
                         {isFirstColumn ? (
@@ -222,20 +244,27 @@ export default function DynamicBankTable({
                               : cyrToLat(String(cellValue))}
                           </span>
                         ) : isSecondColumn ? (
-                          <span 
+                          <span
                             className={cn(
                               "text-slate-800 min-w-[200px]",
-                              bankNameColumn === col && toHref ? "cursor-pointer hover:text-primary hover:underline transition-colors" : ""
+                              bankNameColumn === col && toHref
+                                ? "cursor-pointer hover:text-primary hover:underline transition-colors"
+                                : "",
                             )}
-                            onClick={() => toHref ? bankNameColumn === col && handleBankNameClick(cellValue) : {}}
+                            onClick={() =>
+                              toHref
+                                ? bankNameColumn === col &&
+                                  handleBankNameClick(cellValue)
+                                : {}
+                            }
                           >
                             {cellValue === null ||
                             cellValue === undefined ||
                             cellValue === ""
                               ? "-"
                               : isNumeric(cellValue)
-                              ? formatNumber(cellValue)
-                              : cyrToLat(String(cellValue))}
+                                ? formatNumber(cellValue)
+                                : cyrToLat(String(cellValue))}
                           </span>
                         ) : (
                           <span className="flex items-center justify-center gap-1">
@@ -244,8 +273,8 @@ export default function DynamicBankTable({
                             cellValue === ""
                               ? "-"
                               : isNumeric(cellValue)
-                              ? formatNumber(cellValue)
-                              : cyrToLat(String(cellValue))}
+                                ? formatNumber(cellValue)
+                                : cyrToLat(String(cellValue))}
                             {getRatingIcon()}
                           </span>
                         )}
