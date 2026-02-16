@@ -143,7 +143,7 @@ export default function DynamicBankTable({
 
       {/* Table Container */}
       <div className="overflow-x-auto ">
-        <div className="min-w-full min-h-max max-h-[800px]">
+        <div className="min-w-full h-screen">
           <table className="w-full border-collapse">
             <thead className="sticky top-0 z-10">
               {/* HEADER 1 */}

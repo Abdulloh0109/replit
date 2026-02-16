@@ -119,16 +119,74 @@ export default function RatingsPage() {
       "Dekabr",
     ];
 
+    const monthAliasMap: Record<string, string> = {
+      yanvar: "Yanvar",
+      yan: "Yanvar",
+      january: "Yanvar",
+      fevral: "Fevral",
+      fev: "Fevral",
+      february: "Fevral",
+      mart: "Mart",
+      mar: "Mart",
+      march: "Mart",
+      aprel: "Aprel",
+      apr: "Aprel",
+      april: "Aprel",
+      may: "May",
+      iyun: "Iyun",
+      iyn: "Iyun",
+      june: "Iyun",
+      iyul: "Iyul",
+      iyl: "Iyul",
+      july: "Iyul",
+      avgust: "Avgust",
+      avg: "Avgust",
+      august: "Avgust",
+      sentabr: "Sentabr",
+      sentyabr: "Sentabr",
+      sen: "Sentabr",
+      september: "Sentabr",
+      oktabr: "Oktabr",
+      oktyabr: "Oktabr",
+      okt: "Oktabr",
+      october: "Oktabr",
+      noyabr: "Noyabr",
+      noy: "Noyabr",
+      november: "Noyabr",
+      dekabr: "Dekabr",
+      dek: "Dekabr",
+      december: "Dekabr",
+    };
+
+    const normalizeMonthKey = (rawKey: string): string | null => {
+      const normalizedKey = cyrToLat(String(rawKey).toLowerCase())
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[\s.'`’ʼ-]/g, "");
+
+      const aliasMatch = monthAliasMap[normalizedKey];
+      if (aliasMatch) {
+        return aliasMatch;
+      }
+
+      const monthNumberMatch = normalizedKey.match(/\d{1,2}/);
+      if (monthNumberMatch) {
+        const monthNumber = Number(monthNumberMatch[0]);
+        if (monthNumber >= 1 && monthNumber <= 12) {
+          return monthOrder[monthNumber - 1];
+        }
+      }
+
+      return null;
+    };
+
     // Barcha object key'larini tekshirish
     Object.keys(bankData).forEach((key) => {
       if (!key || key === "name" || key === "№") return;
 
-      const keyLower = key.toLowerCase().trim();
-
-      // Mapping'dan oy nomini topish
-      const mappedMonth = monthOrder.find(
-        (month) => month.toLowerCase().trim() === keyLower
-      );
+      // Har xil yozilgan oy nomlarini standart ko'rinishga o'tkazish
+      const mappedMonth = normalizeMonthKey(key);
 
       if (mappedMonth && monthOrder.includes(mappedMonth)) {
         const value = bankData[key];
@@ -142,8 +200,21 @@ export default function RatingsPage() {
       }
     });
 
-    // Tartib bo'yicha saralash
-    const sortedData = monthOrder
+    // Datada uchragan birinchi oyga nisbatan tartiblash
+    const firstMonthInData = months[0];
+    const firstMonthIndex = firstMonthInData
+      ? monthOrder.indexOf(firstMonthInData)
+      : 0;
+
+    const rotatedMonthOrder =
+      firstMonthIndex > 0
+        ? [
+            ...monthOrder.slice(firstMonthIndex),
+            ...monthOrder.slice(0, firstMonthIndex),
+          ]
+        : monthOrder;
+
+    const sortedData = rotatedMonthOrder
       .map((month) => {
         const index = months.indexOf(month);
         if (index !== -1) {
@@ -152,7 +223,7 @@ export default function RatingsPage() {
         return null;
       })
       .filter(
-        (item): item is { month: string; value: number } => item !== null
+        (item): item is { month: string; value: number } => item !== null,
       );
 
     if (sortedData.length === 0) return null;
