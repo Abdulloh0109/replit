@@ -219,7 +219,7 @@ export default function DynamicBankTable({
                       <td
                         key={colIndex}
                         className={cn(
-                          "px-4 py-3 text-sm border-r border-slate-100 last:border-r-0",
+                          "px-4 py-3 text-lg border-r border-slate-100 last:border-r-0",
                           targetColumn === col && "text-lg",
                           isFirstColumn &&
                             "font-semibold text-slate-500 text-center w-16",
