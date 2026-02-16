@@ -38,7 +38,7 @@ export default function PageLayout({
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
       <Hero />
-     {showNavbar && <Navbar />}
+      {showNavbar && <Navbar />}
 
       <main className="flex-1 bg-slate-50/50">
         <div className="container mx-auto px-4 py-8">{children}</div>
@@ -66,12 +66,7 @@ export default function PageLayout({
               <h4 className="text-white font-bold mb-5 text-lg">Bo'limlar</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
                 {footerSections.map((section, index) => (
-                  <a
-                    key={index}
-                    href={section.href}
-                    className="text-sm"
-                  >
-                  
+                  <a key={index} href={section.href} className="text-sm">
                     <span>{section.label}</span>
                   </a>
                 ))}
@@ -101,7 +96,7 @@ export default function PageLayout({
           </div>
           <div className="border-t border-slate-700/50 pt-8 text-center">
             <p className="text-xs text-slate-500">
-              &copy; 2025 BankRating.uz. Barcha huquqlar himoyalangan.
+              &copy; 2026 BankRating.uz. Barcha huquqlar himoyalangan.
             </p>
           </div>
         </div>

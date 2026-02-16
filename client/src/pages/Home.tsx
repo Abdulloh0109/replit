@@ -87,7 +87,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-xs">
-            &copy; 2025 BankRating.uz. Barcha huquqlar himoyalangan.
+            &copy; 2026 BankRating.uz. Barcha huquqlar himoyalangan.
           </div>
         </div>
       </footer>
