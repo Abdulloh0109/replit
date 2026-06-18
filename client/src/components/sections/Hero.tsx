@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@assets/generated_images/professional_government_bank_building_with_blue_sky.png";
-import logo from "@/assets/CBU_Logo.svg.png";
+import logo from "@/assets/CBU_Logo.png";
 import pdfFile from "@/assets/10dan boshlangan.pdf";
 import pdfFile2 from "@/assets/1.pdf";
 import pdfFileReyting from "@/assets/Бўлимларни Бахолаш.pdf";
